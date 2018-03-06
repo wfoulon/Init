@@ -1,1 +1,8 @@
 #!/bin/bash
+
+apt-get update > /var/log/update_script.log
+apt-get -y upgrade >> /var/log/update_script.log
+
+# pour executer le cron une fois par semaine a 4h00
+# commande shell sudo crontab -u root -e
+# editer le fichier crontab en rajoutant "0 4 * * 1 /absolute/path/to/the/file"
