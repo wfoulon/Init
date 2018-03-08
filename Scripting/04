@@ -1,16 +1,16 @@
 #!/bin/bash
 
-if [ ! -f /home/victor/crontab_backup ]; then
- cat /etc/crontab > /home/victor/crontab_backup
+if [ ! -f /home/wfoulon/crontab_backup ]; then
+ cat /etc/crontab > /home/wfoulon/crontab_backup
 fi
 
-backup_md5=$( md5sum /home/victor/crontab_backup | awk '{print $1}' )
+backup_md5=$( md5sum /home/wfoulon/crontab_backup | awk '{print $1}' )
 cron_md5=$( md5sum /etc/crontab | awk '{print $1}' )
 
 if [ "$backup_md5" != "$cron_md5" ]; then
 	echo "crontab changed"
 	echo "crontab changed" | mail -s "your crontab has changed" root
-	cat /etc/crontab > /home/victor/crontab_backup
+	cat /etc/crontab > /home/wfoulon/crontab_backup
 	exit 1
 else
 	echo "nothing changed"
