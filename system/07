@@ -1,0 +1,2 @@
+service ssh status | grep 'Main PID' | cut -d ' ' -f4 | awk "{print $4}"
+# ou cat /var/run/sshd.pid
